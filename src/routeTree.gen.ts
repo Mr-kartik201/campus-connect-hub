@@ -11,8 +11,16 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as AdminLoginRouteImport } from './routes/admin-login'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FlatmateIndexRouteImport } from './routes/flatmate.index'
+import { Route as BazaarIndexRouteImport } from './routes/bazaar.index'
+import { Route as FlatmatePostRouteImport } from './routes/flatmate.post'
+import { Route as FlatmateIdRouteImport } from './routes/flatmate.$id'
+import { Route as BazaarPostRouteImport } from './routes/bazaar.post'
+import { Route as BazaarIdRouteImport } from './routes/bazaar.$id'
 
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
@@ -24,9 +32,19 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminLoginRoute = AdminLoginRouteImport.update({
   id: '/admin-login',
   path: '/admin-login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -34,39 +52,138 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FlatmateIndexRoute = FlatmateIndexRouteImport.update({
+  id: '/flatmate/',
+  path: '/flatmate/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BazaarIndexRoute = BazaarIndexRouteImport.update({
+  id: '/bazaar/',
+  path: '/bazaar/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FlatmatePostRoute = FlatmatePostRouteImport.update({
+  id: '/flatmate/post',
+  path: '/flatmate/post',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FlatmateIdRoute = FlatmateIdRouteImport.update({
+  id: '/flatmate/$id',
+  path: '/flatmate/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BazaarPostRoute = BazaarPostRouteImport.update({
+  id: '/bazaar/post',
+  path: '/bazaar/post',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BazaarIdRoute = BazaarIdRouteImport.update({
+  id: '/bazaar/$id',
+  path: '/bazaar/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/admin-login': typeof AdminLoginRoute
+  '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/bazaar/$id': typeof BazaarIdRoute
+  '/bazaar/post': typeof BazaarPostRoute
+  '/flatmate/$id': typeof FlatmateIdRoute
+  '/flatmate/post': typeof FlatmatePostRoute
+  '/bazaar/': typeof BazaarIndexRoute
+  '/flatmate/': typeof FlatmateIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/admin-login': typeof AdminLoginRoute
+  '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/bazaar/$id': typeof BazaarIdRoute
+  '/bazaar/post': typeof BazaarPostRoute
+  '/flatmate/$id': typeof FlatmateIdRoute
+  '/flatmate/post': typeof FlatmatePostRoute
+  '/bazaar': typeof BazaarIndexRoute
+  '/flatmate': typeof FlatmateIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/admin-login': typeof AdminLoginRoute
+  '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/bazaar/$id': typeof BazaarIdRoute
+  '/bazaar/post': typeof BazaarPostRoute
+  '/flatmate/$id': typeof FlatmateIdRoute
+  '/flatmate/post': typeof FlatmatePostRoute
+  '/bazaar/': typeof BazaarIndexRoute
+  '/flatmate/': typeof FlatmateIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/admin-login' | '/login' | '/register'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/admin-login'
+    | '/dashboard'
+    | '/login'
+    | '/register'
+    | '/bazaar/$id'
+    | '/bazaar/post'
+    | '/flatmate/$id'
+    | '/flatmate/post'
+    | '/bazaar/'
+    | '/flatmate/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/admin-login' | '/login' | '/register'
-  id: '__root__' | '/' | '/admin-login' | '/login' | '/register'
+  to:
+    | '/'
+    | '/admin'
+    | '/admin-login'
+    | '/dashboard'
+    | '/login'
+    | '/register'
+    | '/bazaar/$id'
+    | '/bazaar/post'
+    | '/flatmate/$id'
+    | '/flatmate/post'
+    | '/bazaar'
+    | '/flatmate'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/admin-login'
+    | '/dashboard'
+    | '/login'
+    | '/register'
+    | '/bazaar/$id'
+    | '/bazaar/post'
+    | '/flatmate/$id'
+    | '/flatmate/post'
+    | '/bazaar/'
+    | '/flatmate/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
   AdminLoginRoute: typeof AdminLoginRoute
+  DashboardRoute: typeof DashboardRoute
   LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
+  BazaarIdRoute: typeof BazaarIdRoute
+  BazaarPostRoute: typeof BazaarPostRoute
+  FlatmateIdRoute: typeof FlatmateIdRoute
+  FlatmatePostRoute: typeof FlatmatePostRoute
+  BazaarIndexRoute: typeof BazaarIndexRoute
+  FlatmateIndexRoute: typeof FlatmateIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -85,11 +202,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin-login': {
       id: '/admin-login'
       path: '/admin-login'
       fullPath: '/admin-login'
       preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -99,14 +230,64 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/flatmate/': {
+      id: '/flatmate/'
+      path: '/flatmate'
+      fullPath: '/flatmate/'
+      preLoaderRoute: typeof FlatmateIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bazaar/': {
+      id: '/bazaar/'
+      path: '/bazaar'
+      fullPath: '/bazaar/'
+      preLoaderRoute: typeof BazaarIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/flatmate/post': {
+      id: '/flatmate/post'
+      path: '/flatmate/post'
+      fullPath: '/flatmate/post'
+      preLoaderRoute: typeof FlatmatePostRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/flatmate/$id': {
+      id: '/flatmate/$id'
+      path: '/flatmate/$id'
+      fullPath: '/flatmate/$id'
+      preLoaderRoute: typeof FlatmateIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bazaar/post': {
+      id: '/bazaar/post'
+      path: '/bazaar/post'
+      fullPath: '/bazaar/post'
+      preLoaderRoute: typeof BazaarPostRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bazaar/$id': {
+      id: '/bazaar/$id'
+      path: '/bazaar/$id'
+      fullPath: '/bazaar/$id'
+      preLoaderRoute: typeof BazaarIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
   AdminLoginRoute: AdminLoginRoute,
+  DashboardRoute: DashboardRoute,
   LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
+  BazaarIdRoute: BazaarIdRoute,
+  BazaarPostRoute: BazaarPostRoute,
+  FlatmateIdRoute: FlatmateIdRoute,
+  FlatmatePostRoute: FlatmatePostRoute,
+  BazaarIndexRoute: BazaarIndexRoute,
+  FlatmateIndexRoute: FlatmateIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
