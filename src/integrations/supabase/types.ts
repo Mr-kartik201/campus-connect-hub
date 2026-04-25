@@ -14,16 +14,217 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      bazaar_products: {
+        Row: {
+          category: string
+          condition: string
+          created_at: string
+          description: string | null
+          id: string
+          is_free: boolean
+          is_sold: boolean
+          photos: string[]
+          pickup_location: string
+          price: number
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          category: string
+          condition: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_free?: boolean
+          is_sold?: boolean
+          photos?: string[]
+          pickup_location: string
+          price?: number
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          category?: string
+          condition?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_free?: boolean
+          is_sold?: boolean
+          photos?: string[]
+          pickup_location?: string
+          price?: number
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      flat_listings: {
+        Row: {
+          amenities: string[]
+          contact_number: string
+          created_at: string
+          description: string | null
+          gender_pref: string
+          id: string
+          is_filled: boolean
+          listing_type: string
+          location: string
+          move_in_date: string | null
+          photos: string[]
+          rent: number
+          room_type: string
+          roommates_count: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amenities?: string[]
+          contact_number: string
+          created_at?: string
+          description?: string | null
+          gender_pref?: string
+          id?: string
+          is_filled?: boolean
+          listing_type: string
+          location: string
+          move_in_date?: string | null
+          photos?: string[]
+          rent: number
+          room_type: string
+          roommates_count?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amenities?: string[]
+          contact_number?: string
+          created_at?: string
+          description?: string | null
+          gender_pref?: string
+          id?: string
+          is_filled?: boolean
+          listing_type?: string
+          location?: string
+          move_in_date?: string | null
+          photos?: string[]
+          rent?: number
+          room_type?: string
+          roommates_count?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          college: string | null
+          course: string | null
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          is_active: boolean
+          phone: string | null
+          updated_at: string
+          year: Database["public"]["Enums"]["year_of_study"] | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          college?: string | null
+          course?: string | null
+          created_at?: string
+          email: string
+          full_name: string
+          id: string
+          is_active?: boolean
+          phone?: string | null
+          updated_at?: string
+          year?: Database["public"]["Enums"]["year_of_study"] | null
+        }
+        Update: {
+          avatar_url?: string | null
+          college?: string | null
+          course?: string | null
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          is_active?: boolean
+          phone?: string | null
+          updated_at?: string
+          year?: Database["public"]["Enums"]["year_of_study"] | null
+        }
+        Relationships: []
+      }
+      reports: {
+        Row: {
+          created_at: string
+          id: string
+          listing_id: string
+          listing_type: string
+          reason: string
+          reporter_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          listing_id: string
+          listing_type: string
+          reason: string
+          reporter_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          listing_id?: string
+          listing_type?: string
+          reason?: string
+          reporter_id?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "student"
+      year_of_study: "1st" | "2nd" | "3rd" | "4th" | "5th"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +351,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "student"],
+      year_of_study: ["1st", "2nd", "3rd", "4th", "5th"],
+    },
   },
 } as const
